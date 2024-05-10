@@ -22,21 +22,23 @@ def add_text_to_image(image_path, text, output_path, font_path=None):
     draw.text((x, y), text[0], fill="black", font=font)
     
     
-    # Event name
+    # college name
+    font_size = 55 if len(text[1])>55 else 85
     font = ImageFont.load_default(font_size)
     text_size = font.getbbox(text[1])
     x,y=402+(1135-((text_size[2]-text_size[0])/2)),1395
     draw.text((x, y), text[1], fill="black", font=font)
     print((text_size[2]-text_size[0])/2)
-    print(len(text[2]))
+    print(len(text[1]))
 
-    # College  name
+    # event  name
     font_size = 40 if len(text[2]) > 53 else (50 if len(text[2]) > 35 else 80)
     font = ImageFont.load_default(font_size)
     text_size = font.getbbox(text[2])
     x,y=702+(649-((text_size[2]-text_size[0])/2)),1556
     draw.text((x, y), text[2], fill="black", font=font)
-    image.save(output_path)
+    image.save('./temp/certificate.jpg')
+
     
     print('completed')
 
