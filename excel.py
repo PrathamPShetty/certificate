@@ -1,20 +1,13 @@
 import openpyxl
 
-def fetch_data_from_excel(file_path):
-    # Load the Excel workbook
+def fetch_data_from_xlsx(file_path):
+    data_list = []  # Initialize an empty list to store the data
     wb = openpyxl.load_workbook(file_path)
-
-    # Select the active sheet
-    sheet = wb.active
-
-    # Iterate through rows and columns to fetch data
-    for row in sheet.iter_rows(values_only=True):
-        for cell in row:
-            print(cell)
-
-    # Close the workbook
-    wb.close()
+    ws = wb.active
+    for row in ws.iter_rows(values_only=True):
+        data_list.append(row)  # Append each row to the list
+    return data_list  # Return the list containing all the data
 
 # Example usage
-file_path = "example.xlsx"  # Replace with the path to your Excel file
-fetch_data_from_excel(file_path)
+
+ # Print the data from the second row and second column
