@@ -10,6 +10,7 @@ if __name__ == "__main__":
     for i in data:
         #  print(i[2])
         #  print(i[3])
+        #  print(i[4])
         #  print(i[5])
         #  print(i[6])
 
@@ -18,7 +19,7 @@ if __name__ == "__main__":
         else:
             add_text_to_image(os.path.join('certificates', 'certificate.jpg'), [f"{i[2]}", f'{i[5]}', f'{i[6]}'], "certificate.jpg")
             convert_jpg_to_pdf('./temp/certificate.jpg', "./temp/Envision_Certificate.pdf")
-            
+            phone = i[4]
             email = i[3]
             print(email)
             subject = f"🎉 Congratulations! Your {i[6]} Event Certificate is Ready 🎓"
@@ -37,7 +38,8 @@ Best regards,
 Team Envision24
 """
             try:
-                send_email('envision24team@gmail.com', "crinvcrptnghowiz", email, subject, body, './temp/Envision_Certificate.pdf')
+                #send_email('envision24team@gmail.com', "crinvcrptnghowiz", email, subject, body, './temp/Envision_Certificate.pdf')
+                send_email('postmaster@envision24.in', "92b5465e9d3552ac7fd9269552680ad3-ed54d65c-8df4e4a5", email, subject, body, './temp/Envision_Certificate.pdf')
                 
             except Exception as e:
-                print(f"Failed to send email to {email}: {str(e)}")
+                print(f"Failed to send email to {email} phone no {phone}: {str(e)}")
