@@ -1,3 +1,4 @@
+import requests
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -5,6 +6,8 @@ from email.mime.application import MIMEApplication
 from reportlab.pdfgen import canvas
 import os
 from PIL import Image, ImageDraw, ImageFont
+
+
 
 
 
@@ -67,9 +70,40 @@ def send_email(sender_email, sender_password, receiver_email, subject, body, pdf
     )
     message.attach(part)
     text = message.as_string()
-    with smtplib.SMTP("smtp.gmail.com", 587) as server:
+    with smtplib.SMTP("smtp.mailgun.org", 587) as server:
         server.starttls()
         server.login(sender_email, sender_password)
         server.sendmail(sender_email, receiver_email, text)
-   
+
+
+# def send_email(sender_email, api_key, receiver_email, subject, body, pdf_file):
+#     # Mailgun API endpoint
+#     url = "https://app.mailgun.com/v3"
+
+#     # Mailgun API parameters
+#     params = {
+#         "from": sender_email,
+#         "to": receiver_email,
+#         "subject": subject,
+#         "text": body,
+#     }
+
+#     # Mailgun API files (attachment)
+#     files = [
+#         ("attachment", ("envision24_certificate.pdf", open(pdf_file, "rb").read()))
+#     ]
+
+#     # Mailgun API headers
+#     headers = {
+#         "Authorization": f"Basic {api_key}"
+#     }
+
+#     # Send the email using Mailgun API
+#     response = requests.post(url, files=files, data=params, headers=headers)
+
+#     # Check the response
+#     if response.status_code == 200:
+#         print("Email sent successfully!")
+#     else:
+#         print("Failed to send email. Status code:", response.status_code)
     
