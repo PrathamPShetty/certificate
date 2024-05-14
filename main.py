@@ -1,4 +1,5 @@
 import os
+import sys
 from helpers import add_text_to_image, convert_jpg_to_pdf, send_email
 from excel import fetch_data_from_xlsx
 
@@ -43,3 +44,5 @@ Team Envision24
                 
             except Exception as e:
                 print(f"Failed to send email to {email} phone no {phone}: {str(e)}")
+                sys.exit(1)
+                
