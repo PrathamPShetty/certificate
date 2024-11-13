@@ -4,7 +4,7 @@ def certificateName():
     return path
 
 def xlsxName():
-    path = './quiz.xlsx'
+    path = './quiz.xlsx'  #  delete the xlsx file every time 
     return path
 
 
