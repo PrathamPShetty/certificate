@@ -2,7 +2,7 @@ import os
 import sys
 from certificate_generator import add_text_to_image, convert_jpg_to_pdf, send_email
 from excel import fetch_data_from_xlsx
-from filename import certificateName, xlsxName
+from filename import certificateName, xlsxName, user_email , sender_passkey
 
 def main():
     if not os.path.exists('./temp'):
@@ -126,9 +126,10 @@ def main():
 
 
 """
-
+        sender_email = user_email()
+        passkey = sender_passkey()
         try:
-            send_email('prathampshetty99sai@gmail.com', "dlwo fqoz vkvw mwyi", email, subject, body, temp_pdf_path)
+            send_email(sender_email, passkey, email, subject, body, temp_pdf_path)
           
         except Exception as e:
             print(f"Failed to send email to {email} : {str(e)}")

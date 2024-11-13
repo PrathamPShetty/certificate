@@ -6,3 +6,12 @@ def certificateName():
 def xlsxName():
     path = './quiz.xlsx'
     return path
+
+
+def user_email():
+    email = 'prathampshetty99sai@gmail.com'
+    return email
+
+def sender_passkey():
+    passkey = 'dlwofqozvkvwmwyi'
+    return passkey
