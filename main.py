@@ -2,12 +2,13 @@ import os
 import sys
 from certificate_generator import add_text_to_image, convert_jpg_to_pdf, send_email
 from excel import fetch_data_from_xlsx
+from filename import certificateName, xlsxName
 
 def main():
     if not os.path.exists('./temp'):
         os.makedirs('./temp')
 
-    file_path = "quiz.xlsx"  # Replace with the path to your XLSX file
+    file_path =  xlsxName() 
     data = fetch_data_from_xlsx(file_path)
     
     for i in data:
@@ -16,8 +17,8 @@ def main():
             print(f"Invalid email address: {i[2]}")
             continue
 
-        
-        input_image_path = os.path.join('certificates', 'Cream.png')# Replace with the path to your certificate name
+        certificate_path = certificateName()
+        input_image_path = os.path.join('certificates', certificate_path)
         temp_image_path = './temp/certificate.jpg'
         temp_pdf_path = "./temp/certificate.pdf"
 
