@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Conference Participation</title>
+  <style type="text/css">
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: white; /* Set background color to white */
+      color: #161616;
+    }
+    .container {
+      width: 100%;
+      max-width: 600px; /* Adjusted max-width for the container */
+      margin: 0 auto;
+      padding: 20px; /* Added padding around the container */
+    }
+    .card {
+      background-color: #1e1e1e;
+      
+      padding: 20px;
+      margin-bottom: 0px; /* Added margin between cards */
+    }
+    .image-card {
+      max-width: 100%; /* Image card takes full width of container */
+     
+      margin-bottom: 20px;
+      border-top-left-radius: 12px; /* Border radius only on top left */
+      border-top-right-radius: 12px; /* Added margin below image */
+      
+    }
+    .image-card img {
+      width: 100%;
+      border-radius: 12px;
+    }
+    .text-content {
+        padding: 20px; /* Added padding inside the text content */
+        border-bottom-left-radius: 12px; /* Border radius only on bottom left */
+        border-bottom-right-radius: 12px; /* Border radius only on bottom right */
+        background-color: #1e1e1e; /* Match the background color of the card */
+    }
+    .text-content h1 {
+      text-align: center;
+      color: #FFFFFF;
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+    .text-content p {
+      max-width: 100%;
+      line-height: 1.5;
+      font-size: 1.2em;
+      color: #FFFFFF;
+      text-align: left;
+    }
+    .text-content p span {
+      display: block;
+      text-align: left;
+      margin-top: 20px;
+    }
+     .card:last-child {
+      margin-bottom: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- First Card -->
+    <div class="card ax-center text-white mb-10">
+      <div class="image-card">
+        <img src="https://i0.wp.com/krazytech.com/wp-content/uploads/2017/07/Latest-Technical-Paper-Presentation-Topics.jpg?w=510&ssl=1" alt="Event Image">
+      </div>
+    </div>
+    
+    <!-- Second Card -->
+    <div class="card ax-center text-white mb-10">
+      <div class="text-content">
+        <h1>Conference Participation</h1>
+        <p>
+          Dear {{name}},<br><br>
+          We are delighted to inform you that your certificate for presenting a paper at the recent conference is now available! 🌟 Please find the attached PDF certificate for your records.<br><br>
+          Thank you for your participation and valuable contributions. We hope you had a wonderful experience and look forward to seeing you at future events!
+        </p>
+        <p>
+          Best regards,<br>Conference Team
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

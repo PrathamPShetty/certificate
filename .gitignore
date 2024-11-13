@@ -1,2 +1,4 @@
-venv/
-./temp
+.venv/
+temp/
+./main copy 2.py
+./helpers copy.py

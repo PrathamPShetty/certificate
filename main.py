@@ -1,48 +1,137 @@
 import os
 import sys
-from helpers import add_text_to_image, convert_jpg_to_pdf, send_email
+from certificate_generator import add_text_to_image, convert_jpg_to_pdf, send_email
 from excel import fetch_data_from_xlsx
 
-if __name__ == "__main__":
-    file_path = "certificate_issue.xlsx"  # Replace with the path to your XLSX file
+def main():
+    if not os.path.exists('./temp'):
+        os.makedirs('./temp')
+
+    file_path = "quiz.xlsx"  # Replace with the path to your XLSX file
     data = fetch_data_from_xlsx(file_path)
-   
     
     for i in data:
-        #  print(i[2])
-        #  print(i[3])
-        #  print(i[4])
-        #  print(i[5])
-        #  print(i[6])
-
-        if i[3] == 'email':
+     
+        if not i[1] or '@' not in i[2]:
+            print(f"Invalid email address: {i[2]}")
             continue
-        else:
-            add_text_to_image(os.path.join('certificates', 'certificate.jpg'), [f"{i[2]}", f'{i[5]}', f'{i[6]}'], "certificate.jpg")
-            convert_jpg_to_pdf('./temp/certificate.jpg', "./temp/Envision_Certificate.pdf")
-            phone = i[4]
-            email = i[3]
-            print(email)
-            subject = f"🎉 Congratulations! Your {i[6]} Event Certificate is Ready 🎓"
-            body = f"""Dear {i[2]},
-            We are delighted to inform you that your certificate for participating in the {i[6]} event is now available! 🌟
 
-📜 Certificate Details:
-Event: {i[6]}
-Participant Name: {i[2]}
+        
+        input_image_path = os.path.join('certificates', 'Cream.png')# Replace with the path to your certificate name
+        temp_image_path = './temp/certificate.jpg'
+        temp_pdf_path = "./temp/certificate.pdf"
 
-Please find the attached PDF certificate for your records.
+        add_text_to_image(input_image_path, [i[1], i[2]], temp_image_path)
+        
+        if not os.path.exists(temp_image_path):
+            print(f"File not found: {temp_image_path}")
+            continue
+        
+        convert_jpg_to_pdf(temp_image_path, temp_pdf_path)
+        
+        name = i[1]
+        email = i[2]
+        print(email)
+        subject = "🎉 Congratulations! Your Participation Certificate is Ready 🎓"
 
-Thank you for your participation and valuable contributions to the {i[6]} event. We hope you had a wonderful experience and look forward to seeing you at future events!
+        body = f"""<!DOCTYPE html>
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>BGMI Event Participation</title>
+  <style type="text/css">
+    body {{
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: white; /* Set background color to white */
+      color: #161616;
+    }}
+    .container {{
+      width: 100%;
+      max-width: 600px; /* Adjusted max-width for the container */
+      margin: 0 auto;
+      padding: 20px; /* Added padding around the container */
+    }}
+    .card {{
+      background-color: #1e1e1e;
+      border-radius: 0px;
+      padding: 20px;
+      margin-bottom: 0px; /* Added margin between cards */
+    }}
+    .image-card {{
+      max-width: 100%; /* Image card takes full width of container */
+      border-radius: 12px;
+      margin-bottom: 20px; /* Added margin below image */
+    }}
+    .image-card img {{
+      width: 100%;
+      border-radius: 12px;
+    }}
+    .text-content {{
+      flex: 1;
+    }}
+    .text-content h1 {{
+      text-align: center;
+      color: #FFFFFF;
+      font-size: 2em;
+      margin-bottom: 20px;
+    }}
+    .text-content p {{
+      max-width: 100%;
+      line-height: 1.5;
+      font-size: 1.2em;
+      color: #FFFFFF;
+      text-align: left;
+    }}
+    .text-content p span {{
+      display: block;
+      text-align: left;
+      margin-top: 20px;
+    }}
+    .card:last-child {{
+      margin-bottom: 0;
+    }}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- First Card -->
+    <div class="card ax-center text-white mb-10">
+      <div class="image-card">
+        <img src="https://beebom.com/wp-content/uploads/2023/05/Untitled-design-4-5.jpg" alt="BGMI Event Image">
+      </div>
+    </div>
+    
+    <!-- Second Card -->
+    <div class="card ax-center text-white mb-10">
+      <div class="text-content">
+        <h1>Quiz Competion Participation</h1>
+        <p>
+          Dear {name},<br><br>
+          We are thrilled to announce that your certificate for participating in the Quiz Competion is now ready! 🌟 Please find the attached PDF certificate for your records.<br><br>
+          Thank you for your enthusiasm and contributions. We hope you had an amazing time and look forward to your participation in future events!
+        </p>
+        <p>
+          Best regards,<br>Team AIML
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
 
-Best regards,
-Team Envision24
+
 """
-            try:
-                #send_email('envision24team@gmail.com', "crinvcrptnghowiz", email, subject, body, './temp/Envision_Certificate.pdf')
-                send_email('postmaster@envision24.in', "c2612838d8b5dbe3471409b7dbb80cfa-ed54d65c-68133709", email, subject, body, './temp/Envision_Certificate.pdf')
-                
-            except Exception as e:
-                print(f"Failed to send email to {email} phone no {phone}: {str(e)}")
-                sys.exit(1)
-                
+
+        try:
+            send_email('prathampshetty99sai@gmail.com', "dlwo fqoz vkvw mwyi", email, subject, body, temp_pdf_path)
+          
+        except Exception as e:
+            print(f"Failed to send email to {email} : {str(e)}")
+            sys.exit(1)
+
+if __name__ == "__main__":
+    main()
