@@ -1,4 +1,4 @@
-.venv/
+venv/
 temp/
 dummy.py
 helpers.py
