@@ -32,7 +32,7 @@ def main():
         
         name = i[1]
         email = i[2]
-        print(email)
+        #print(email)
         subject = "🎉 Congratulations! Your Participation Certificate is Ready 🎓"
 
         body = f"""<!DOCTYPE html>
