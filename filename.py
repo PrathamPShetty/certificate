@@ -1,15 +1,15 @@
 import os
 def certificateName():
-    path = 'Cream.png'  # only file name
+    path = 'certificate.jpg'  # only file name
     return path
 
 def xlsxName():
-    path = './quiz.xlsx'  #  delete the xlsx file every time 
+    path = './test.xlsx'  #  delete the xlsx file every time 
     return path
 
 
 def user_email():
-    email = 'prathampshetty99sai@gmail.com'
+    email = 'prathampshetty99sai@gmail.co'
     return email
 
 def sender_passkey():

@@ -1,6 +1,6 @@
 import os
 import sys
-from certificate_generator import add_text_to_image, convert_jpg_to_pdf, send_email
+from helpers import add_text_to_image, convert_jpg_to_pdf, send_email
 from excel import fetch_data_from_xlsx
 from filename import certificateName, xlsxName, user_email , sender_passkey
 
@@ -13,16 +13,16 @@ def main():
     
     for i in data:
      
-        if not i[1] or '@' not in i[2]:
+        if not i[1] or not i[2] or not i[3] or '@' not in i[4]:
             print(f"Invalid email address: {i[2]}")
             continue
-
+      
         certificate_path = certificateName()
         input_image_path = os.path.join('certificates', certificate_path)
         temp_image_path = './temp/certificate.jpg'
         temp_pdf_path = "./temp/certificate.pdf"
 
-        add_text_to_image(input_image_path, [i[1], i[2]], temp_image_path)
+        add_text_to_image(input_image_path, [i[1], i[2], i[3]], temp_image_path)
         
         if not os.path.exists(temp_image_path):
             print(f"File not found: {temp_image_path}")
@@ -31,8 +31,8 @@ def main():
         convert_jpg_to_pdf(temp_image_path, temp_pdf_path)
         
         name = i[1]
-        email = i[2]
-        #print(email)
+        email = i[4]
+        print(email)
         subject = "🎉 Congratulations! Your Participation Certificate is Ready 🎓"
 
         body = f"""<!DOCTYPE html>
