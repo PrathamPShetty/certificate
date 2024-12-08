@@ -16,30 +16,32 @@ def add_text_to_image(image_path, text, output_path, font_path='./font/PTSerif-I
         font = ImageFont.truetype(font_path, font_size)
     else:
         font = ImageFont.load_default(font_size)
-      # Calculate text size and position
+
     text_size = font.getbbox(text[0])
-    x,y = (950-((text_size[2]-text_size[0])/2)), 689
-    # print(x,y)
+    x,y = (955-((text_size[2]-text_size[0])/2)), 664
+    print(x,y)
     # print(text_size)
    
     draw.text((x, y), text[0], fill="black", font=font)
     
     
     # college name
-    font_size = 55 #if len(text[1])>55 else 85
+    font_size = 29 #if len(text[1])>55 else 85
     font = ImageFont.load_default(font_size)
     text_size = font.getbbox(text[1])
-    x,y=402+(1135-((text_size[2]-text_size[0])/2)),1395
+    x,y= (458-((text_size[2]-text_size[0])/2)),782
     draw.text((x, y), text[1], fill="black", font=font)
+    print(x,y)
  
 
 
     # event  name
-    font_size = 40 if len(text[2]) > 53 else (50 if len(text[2]) > 35 else 80)
+    font_size = 29 # if len(text[2]) > 53 else (50 if len(text[2]) > 35 else 80)
     font = ImageFont.load_default(font_size)
     text_size = font.getbbox(text[2])
-    x,y=702+(649-((text_size[2]-text_size[0])/2)),1556
+    x,y=(1475-((text_size[2]-text_size[0])/2)),782
     draw.text((x, y), text[2], fill="black", font=font)
+    print(x,y)
 
 
 
