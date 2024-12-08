@@ -102,7 +102,7 @@ def main():
     <!-- First Card -->
     <div class="card ax-center text-white mb-10">
       <div class="image-card">
-        <img src="https://beebom.com/wp-content/uploads/2023/05/Untitled-design-4-5.jpg" alt="BGMI Event Image">
+        <img src="https://altius-five.vercel.app/media/3.jpg" alt="BGMI Event Image">
       </div>
     </div>
     

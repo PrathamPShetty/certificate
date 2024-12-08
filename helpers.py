@@ -25,7 +25,7 @@ def add_text_to_image(image_path, text, output_path, font_path='./font/PTSerif-I
     draw.text((x, y), text[0], fill="black", font=font)
     
     
-    # college name
+    # usn
     font_size = 29 #if len(text[1])>55 else 85
     font = ImageFont.load_default(font_size)
     text_size = font.getbbox(text[1])
@@ -35,7 +35,7 @@ def add_text_to_image(image_path, text, output_path, font_path='./font/PTSerif-I
  
 
 
-    # event  name
+    # departname  name
     font_size = 29 # if len(text[2]) > 53 else (50 if len(text[2]) > 35 else 80)
     font = ImageFont.load_default(font_size)
     text_size = font.getbbox(text[2])
