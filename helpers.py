@@ -11,36 +11,49 @@ def add_text_to_image(image_path, text, output_path, font_path='./font/PTSerif-I
   
     image = Image.open(image_path)
     draw = ImageDraw.Draw(image)
-    font_size = 52
+    font_size = 66
     if font_path:
         font = ImageFont.truetype(font_path, font_size)
     else:
         font = ImageFont.load_default(font_size)
 
     text_size = font.getbbox(text[0])
-    x,y = (955-((text_size[2]-text_size[0])/2)), 664
+    x,y = (2119-((text_size[2]-text_size[0])/2)),1095
     print(x,y)
     # print(text_size)
    
     draw.text((x, y), text[0], fill="black", font=font)
     
-    
+    print(len(text[1]))
     # usn
-    font_size = 29 #if len(text[1])>55 else 85
-    font = ImageFont.load_default(font_size)
+    font_size = 50 if len(text[1])>41 else 66
+    if font_path:
+        font = ImageFont.truetype(font_path, font_size)
+    else:
+        font = ImageFont.load_default(font_size)
     text_size = font.getbbox(text[1])
-    x,y= (458-((text_size[2]-text_size[0])/2)),782
+    x,y= (1379-((text_size[2]-text_size[0])/2)),1266
     draw.text((x, y), text[1], fill="black", font=font)
     print(x,y)
  
 
 
     # departname  name
-    font_size = 29 # if len(text[2]) > 53 else (50 if len(text[2]) > 35 else 80)
-    font = ImageFont.load_default(font_size)
+    font_size = 66 if len(text[2])>50 else 46
+    if font_path:
+        font = ImageFont.truetype(font_path, font_size)
+    else:
+        font = ImageFont.load_default(font_size)
     text_size = font.getbbox(text[2])
-    x,y=(1475-((text_size[2]-text_size[0])/2)),782
+    x,y=(1582-((text_size[2]-text_size[0])/2)),1449
     draw.text((x, y), text[2], fill="black", font=font)
+    print(x,y)
+
+    font_size = 36 #if len(text[3])>50 else 46
+    font = ImageFont.load_default(font_size)
+    text_size = font.getbbox(text[3])
+    x,y=2285,45
+    draw.text((x, y), text[3], fill="black", font=font)
     print(x,y)
 
 

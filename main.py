@@ -4,34 +4,54 @@ from helpers import add_text_to_image, convert_jpg_to_pdf, send_email
 from excel import fetch_data_from_xlsx
 from filename import certificateName, xlsxName, user_email , sender_passkey
 
+def sanitize_filename(name,email):
+    sanitized_name = "".join([c if c.isalnum() or c in (' ', '-', '_') else '_' for c in name])
+    sanitized_email = "".join([c if c.isalnum() or c in ('-', '_', '@') else '_' for c in email])
+    return f"{sanitized_name}_{sanitized_email}"
+
 def main():
     if not os.path.exists('./temp'):
         os.makedirs('./temp')
 
     file_path =  xlsxName() 
     data = fetch_data_from_xlsx(file_path)
-    
+  
     for i in data:
      
-        if not i[1] or not i[2] or not i[3] or '@' not in i[4]:
+        if not i[1] or not i[2] or not i[3] or not i[4]:
             print(f"Invalid email address: {i[2]}")
             continue
-      
+        
+        print(i[0]) 
+        print(i[1])
+        print(i[2])
+        print(i[3])
+        print(i[4])
+        print("/n")
+
+        temp_path = sanitize_filename(i[2],i[5])
         certificate_path = certificateName()
         input_image_path = os.path.join('certificates', certificate_path)
         temp_image_path = './temp/certificate.jpg'
-        temp_pdf_path = "./temp/certificate.pdf"
+        temp_pdf_path = f'./temp/{temp_path}.pdf'
 
-        add_text_to_image(input_image_path, [i[1], i[2], i[3]], temp_image_path)
+        
+
+
+        print(i[1])
+
+      
+    
+        add_text_to_image(input_image_path, [i[2], i[4], i[1],i[6]], temp_image_path)
         
         if not os.path.exists(temp_image_path):
             print(f"File not found: {temp_image_path}")
             continue
         
         convert_jpg_to_pdf(temp_image_path, temp_pdf_path)
-        
-        name = i[1]
-        email = i[4]
+       
+        name = i[2]
+        email = i[5]
         print(email)
         subject = "🎉 Congratulations! Your Participation Certificate is Ready 🎓"
 
@@ -128,12 +148,12 @@ def main():
 """
         sender_email = user_email()
         passkey = sender_passkey()
-        try:
-            send_email(sender_email, passkey, email, subject, body, temp_pdf_path)
+        # try:
+        #     send_email(sender_email, passkey, email, subject, body, temp_pdf_path)
           
-        except Exception as e:
-            print(f"Failed to send email to {email} : {str(e)}")
-            sys.exit(1)
+        # except Exception as e:
+        #     print(f"Failed to send email to {email} : {str(e)}")
+        #     sys.exit(1)
 
 if __name__ == "__main__":
     main()
