@@ -22,12 +22,7 @@ def main():
             print(f"Invalid email address: {i[2]}")
             continue
         
-        print(i[0]) 
-        print(i[1])
-        print(i[2])
-        print(i[3])
-        print(i[4])
-        print("/n")
+      
 
         temp_path = sanitize_filename(i[2],i[5])
         certificate_path = certificateName()
@@ -38,7 +33,7 @@ def main():
         
 
 
-        print(i[1])
+     
 
       
     

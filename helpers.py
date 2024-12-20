@@ -19,7 +19,7 @@ def add_text_to_image(image_path, text, output_path, font_path='./font/PTSerif-I
 
     text_size = font.getbbox(text[0])
     x,y = (2119-((text_size[2]-text_size[0])/2)),1095
-    print(x,y)
+    # print(x,y)
     # print(text_size)
    
     draw.text((x, y), text[0], fill="black", font=font)
@@ -34,8 +34,7 @@ def add_text_to_image(image_path, text, output_path, font_path='./font/PTSerif-I
     text_size = font.getbbox(text[1])
     x,y= (1379-((text_size[2]-text_size[0])/2)),1266
     draw.text((x, y), text[1], fill="black", font=font)
-    print(x,y)
- 
+  
 
 
     # departname  name
@@ -47,14 +46,14 @@ def add_text_to_image(image_path, text, output_path, font_path='./font/PTSerif-I
     text_size = font.getbbox(text[2])
     x,y=(1582-((text_size[2]-text_size[0])/2)),1449
     draw.text((x, y), text[2], fill="black", font=font)
-    print(x,y)
+
 
     font_size = 36 #if len(text[3])>50 else 46
     font = ImageFont.load_default(font_size)
     text_size = font.getbbox(text[3])
     x,y=2285,45
     draw.text((x, y), text[3], fill="black", font=font)
-    print(x,y)
+
 
 
 
