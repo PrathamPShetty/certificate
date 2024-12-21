@@ -28,7 +28,7 @@ def main():
         certificate_path = certificateName()
         input_image_path = os.path.join('certificates', certificate_path)
         temp_image_path = './temp/certificate.jpg'
-        temp_pdf_path = f'./temp/{temp_path}.pdf'
+        temp_pdf_path = f'./temp/certificate.pdf'
 
         
 
