@@ -4,10 +4,13 @@ from helpers import add_text_to_image, convert_jpg_to_pdf, send_email
 from excel import fetch_data_from_xlsx
 from filename import certificateName, xlsxName, user_email , sender_passkey
 
-def sanitize_filename(name,email):
-    sanitized_name = "".join([c if c.isalnum() or c in (' ', '-', '_') else '_' for c in name])
-    sanitized_email = "".join([c if c.isalnum() or c in ('-', '_', '@') else '_' for c in email])
+def sanitize_filename(name, email):
+    # Handle None (null) values
+    sanitized_name = "".join([c if c.isalnum() or c in (' ', '-', '_') else '_' for c in (name or '')])
+    sanitized_email = "".join([c if c.isalnum() or c in ('-', '_', '@') else '_' for c in (email or '')])
+    
     return f"{sanitized_name}_{sanitized_email}"
+
 
 def main():
     if not os.path.exists('./temp'):
@@ -17,10 +20,7 @@ def main():
     data = fetch_data_from_xlsx(file_path)
   
     for i in data:
-     
-        if not i[1] or not i[2] or not i[3] or not i[4]:
-            print(f"Invalid email address: {i[2]}")
-            continue
+    
         
       
 
@@ -143,12 +143,12 @@ def main():
 """
         sender_email = user_email()
         passkey = sender_passkey()
-        try:
-            send_email(sender_email, passkey, email, subject, body, temp_pdf_path)
+        # try:
+        #     send_email(sender_email, passkey, email, subject, body, temp_pdf_path)
           
-        except Exception as e:
-            print(f"Failed to send email to {email} : {str(e)}")
-            sys.exit(1)
+        # except Exception as e:
+        #     print(f"Failed to send email to {email} : {str(e)}")
+        #     sys.exit(1)
 
 if __name__ == "__main__":
     main()
