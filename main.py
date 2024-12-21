@@ -143,12 +143,12 @@ def main():
 """
         sender_email = user_email()
         passkey = sender_passkey()
-        # try:
-        #     send_email(sender_email, passkey, email, subject, body, temp_pdf_path)
+        try:
+            send_email(sender_email, passkey, email, subject, body, temp_pdf_path)
           
-        # except Exception as e:
-        #     print(f"Failed to send email to {email} : {str(e)}")
-        #     sys.exit(1)
+        except Exception as e:
+            print(f"Failed to send email to {email} : {str(e)}")
+            sys.exit(1)
 
 if __name__ == "__main__":
     main()

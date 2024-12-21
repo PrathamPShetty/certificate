@@ -1,6 +1,6 @@
 import os
 def certificateName():
-    path = 'ECE.jpg'  # only file name
+    path = 'ECE1.jpg'  # only file name
     return path
 
 def xlsxName():
@@ -10,10 +10,10 @@ def xlsxName():
 
 def user_email():
     # email = 'prathampshetty99sai@gmail.com'
-    email = 'aimlteam18@gmail.com'
+    email = 'altiussit2K24@gmail.com'
     return email
 
 def sender_passkey():
     # passkey = 'dlwofqozvkvwmwyi'
-    passkey = 'dmwgofpisniwiddr'
+    passkey = 'qrccnkoxgcugamkz'
     return passkey   
