@@ -24,7 +24,7 @@ def main():
         
       
 
-        temp_path = sanitize_filename(i[2],i[5])
+        # temp_path = sanitize_filename(i[2],i[5])
         certificate_path = certificateName()
         input_image_path = os.path.join('certificates', certificate_path)
         temp_image_path = './temp/certificate.jpg'
@@ -37,7 +37,7 @@ def main():
 
       
     
-        add_text_to_image(input_image_path, [i[2], i[4], i[1],i[6]], temp_image_path)
+        add_text_to_image(input_image_path, [i[0], i[2]], temp_image_path)
         
         if not os.path.exists(temp_image_path):
             print(f"File not found: {temp_image_path}")
@@ -45,100 +45,95 @@ def main():
         
         convert_jpg_to_pdf(temp_image_path, temp_pdf_path)
        
-        name = i[2]
-        email = i[5]
+        name = i[0]
+        email = i[1]
         print(email)
         subject = "🎉 Congratulations! Your Participation Certificate is Ready 🎓"
 
-        body = f"""<!DOCTYPE html>
-<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+        body = f"""
+
+        <!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>BGMI Event Participation</title>
-  <style type="text/css">
-    body {{
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Participation Certificate - Envision25</title>
+  <style>
+    body {
       margin: 0;
       padding: 0;
       font-family: Arial, sans-serif;
-      background-color: white; /* Set background color to white */
+      background-color: white;
       color: #161616;
-    }}
-    .container {{
+    }
+    .container {
       width: 100%;
-      max-width: 600px; /* Adjusted max-width for the container */
+      max-width: 600px;
       margin: 0 auto;
-      padding: 20px; /* Added padding around the container */
-    }}
-    .card {{
-      background-color: #1e1e1e;
-      border-radius: 0px;
       padding: 20px;
-      margin-bottom: 0px; /* Added margin between cards */
-    }}
-    .image-card {{
-      max-width: 100%; /* Image card takes full width of container */
-      border-radius: 12px;
-      margin-bottom: 20px; /* Added margin below image */
-    }}
-    .image-card img {{
+    }
+    .card {
+      background-color: #1e1e1e;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .image-card img {
       width: 100%;
       border-radius: 12px;
-    }}
-    .text-content {{
-      flex: 1;
-    }}
-    .text-content h1 {{
+    }
+    .text-content h1 {
       text-align: center;
-      color: #FFFFFF;
-      font-size: 2em;
-      margin-bottom: 20px;
-    }}
-    .text-content p {{
-      max-width: 100%;
-      line-height: 1.5;
-      font-size: 1.2em;
-      color: #FFFFFF;
-      text-align: left;
-    }}
-    .text-content p span {{
-      display: block;
-      text-align: left;
-      margin-top: 20px;
-    }}
-    .card:last-child {{
-      margin-bottom: 0;
-    }}
+      color: #ffffff;
+    }
+    .text-content p {
+      color: #ffffff;
+      font-size: 1.1em;
+      line-height: 1.6;
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 15px;
+      background-color: #00bcd4;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <!-- First Card -->
-    <div class="card ax-center text-white mb-10">
+    <div class="card">
       <div class="image-card">
-        <img src="https://altius-five.vercel.app/media/3.jpg" alt="BGMI Event Image">
+        <img src="https://alumniweb.blob.core.windows.net/envision/_ENVISION%20EVENTS%20WEBSITE%20CARDS.png" alt="Event Image" />
       </div>
     </div>
-    
-    <!-- Second Card -->
-    <div class="card ax-center text-white mb-10">
+    <div class="card" style="background-color:rgb(0, 0, 0); padding: 20px; border-radius: 8px; color: white; font-family: Arial, sans-serif;">
       <div class="text-content">
-        <h1>Quiz Competion Participation</h1>
-        <p>
-          Dear {name},<br><br>
-          We are thrilled to announce that your certificate for participating in the Quiz Competion is now ready! 🌟 Please find the attached PDF certificate for your records.<br><br>
-          Thank you for your enthusiasm and contributions. We hope you had an amazing time and look forward to your participation in future events!
+        <h1 style="color: #00ffff; text-align: center;">
+          🎉 Participation Certificate
+        </h1>
+        <p style="font-size: 16px;">Thank you for participating in our event!</p>
+      <p style="font-size: 16px;">
+  🧾 Certificate awarded to: <strong style="color: #00ffff;">${name}</strong>
+</p>
+
+        <p style="font-size: 16px;">
+          📨 Your participation certificate has been sent to your registered email.
         </p>
-        <p>
-          Best regards,<br>Team AIML
+        <p style="font-size: 16px;">
+          📅 Explore more events at:<br />
+          <a href="https://envisionsit.com/events" target="_blank" style="display: inline-block; margin-top: 10px; padding: 10px 20px; background-color: #00ffff; color: #000; text-decoration: none; border-radius: 5px; font-weight: bold;">
+            ➡️ Visit Events Page
+          </a>
         </p>
+        <p style="font-size: 16px;">🤝 Best regards,<br />Envision25 Team</p>
       </div>
     </div>
   </div>
 </body>
 </html>
-
 
 """
         sender_email = user_email()

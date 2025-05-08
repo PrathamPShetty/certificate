@@ -3,3 +3,5 @@ temp/
 dummy.py
 
 *.zip
+
+env/
