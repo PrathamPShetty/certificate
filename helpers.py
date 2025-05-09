@@ -11,27 +11,27 @@ def add_text_to_image(image_path, text, output_path, font_path='./font/PTSerif-I
   
     image = Image.open(image_path)
     draw = ImageDraw.Draw(image)
-    font_size = 56
+    font_size = 156
     if font_path:
         font = ImageFont.truetype(font_path, font_size)
     else:
         font = ImageFont.load_default(font_size)
 
     text_size = font.getbbox(text[0])
-    x,y = (1321-((text_size[2]-text_size[0])/2)),669
+    x,y = (3152-((text_size[2]-text_size[0])/2)),2540
   
    
     draw.text((x, y), text[0], fill="black", font=font)
     
     print(text[1])
 
-    font_size = 35 # if len(text[1])>41 else 66
+    font_size = 120 # if len(text[1])>41 else 66
     if font_path:
         font = ImageFont.truetype(font_path, font_size)
     else:
         font = ImageFont.load_default(font_size)
     text_size = font.getbbox(text[1])
-    x,y= (659-((text_size[2]-text_size[0])/2)),769
+    x,y= (3152-((text_size[2]-text_size[0])/2)),2730
     draw.text((x, y), text[1], fill="black", font=font)
   
 
