@@ -11,7 +11,7 @@ def add_text_to_image(image_path, text, output_path, font_path='./font/PTSerif-I
   
     image = Image.open(image_path)
     draw = ImageDraw.Draw(image)
-    font_size = 156
+    font_size = 30
     if font_path:
         font = ImageFont.truetype(font_path, font_size)
     else:

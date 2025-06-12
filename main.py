@@ -9,7 +9,7 @@ def sanitize_filename(name, email):
     sanitized_name = "".join([c if c.isalnum() or c in (' ', '-', '_') else '_' for c in (name or '')])
     sanitized_email = "".join([c if c.isalnum() or c in ('-', '_', '@') else '_' for c in (email or '')])
     
-    return f"{sanitized_name}_{sanitized_email}"
+    return f"./temp/{sanitized_name}_{sanitized_email}"
 
 
 def main():
@@ -22,9 +22,9 @@ for i in data:
     certificate_path = certificateName()  
     input_image_path = os.path.join('certificates', certificate_path)  
     temp_image_path = './temp/certificate.jpg'  
-    temp_pdf_path = './temp/certificate.pdf'  
+    temp_pdf_path = sanitize_filename(i[0],i[1])+'.pdf' 
 
-    add_text_to_image(input_image_path, [i[0], i[2]], temp_image_path)  
+    add_text_to_image(input_image_path, [i[0], i[1]], temp_image_path)  
 
     if not os.path.exists(temp_image_path):  
         print(f"File not found: {temp_image_path}")  
@@ -123,7 +123,7 @@ for i in data:
     passkey = sender_passkey()  
 
     try:  
-        send_email(sender, passkey, email, subject, body, temp_pdf_path)  
+        # send_email(sender, passkey, email, subject, body, temp_pdf_path)  
         print(f"✅ Certificate sent to {email}")  
     except Exception as e:  
         print(f"❌ Failed to send email to {email} : {str(e)}")  

@@ -1,10 +1,10 @@
 import os
 def certificateName():
-    path = 'certicate.png'  # only file name
+    path = 'certificate.jpg'  # only file name
     return path
 
 def xlsxName():
-    path = './certicate1.xlsx'  #  delete the xlsx file every time 
+    path = './certificate.xlsx'  #  delete the xlsx file every time 
     return path
 
 
