@@ -23,6 +23,7 @@ for i in data:
     input_image_path = os.path.join('certificates', certificate_path)  
     temp_image_path = './temp/certificate.jpg'  
     temp_pdf_path = sanitize_filename(i[0],i[1])+'.pdf' 
+    # temp_pdf_path = f"./temp/certificate.pdf"
 
     add_text_to_image(input_image_path, [i[0], i[1]], temp_image_path)  
 

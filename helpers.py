@@ -7,33 +7,42 @@ from reportlab.pdfgen import canvas
 import os
 from PIL import Image, ImageDraw, ImageFont
 
-def add_text_to_image(image_path, text, output_path, font_path='./font/PTSerif-Italic.ttf'):
-  
+
+def add_text_to_image(image_path, text, output_path, font_path='./font/Merriweather/Merriweather-VariableFont_opsz,wdth,wght.ttf'):
     image = Image.open(image_path)
     draw = ImageDraw.Draw(image)
+
+    # Draw first line of text
+    font_path1='./font/DMSerifDisplay-Regular.ttf'
     font_size = 30
-    if font_path:
-        font = ImageFont.truetype(font_path, font_size)
-    else:
-        font = ImageFont.load_default(font_size)
-
+    font = ImageFont.truetype(font_path1, font_size)
     text_size = font.getbbox(text[0])
-    x,y = (3152-((text_size[2]-text_size[0])/2)),2540
-  
-   
-    draw.text((x, y), text[0], fill="black", font=font)
-    
-    print(text[1])
+    x = 412 - ((text_size[2] - text_size[0]) / 2)
+    y = 256
+    draw.text((x, y), text[0], fill="brown", font=font)
+    print(text[0])
 
-    font_size = 120 # if len(text[1])>41 else 66
-    if font_path:
-        font = ImageFont.truetype(font_path, font_size)
+    # text[1]= "SmartAgro: An AI-powered system that guides farmers in crop selection, fertilizer planning "
+
+    print(len(text[1]))
+
+    if len(text[1]) > 90:
+        font_size = 13
+    elif len(text[1]) > 80:
+        font_size = 17
+    elif len(text[1]) > 60:
+        font_size = 20
     else:
-        font = ImageFont.load_default(font_size)
+        font_size = 23
+
+
+    font = ImageFont.truetype(font_path, font_size)
     text_size = font.getbbox(text[1])
-    x,y= (3152-((text_size[2]-text_size[0])/2)),2730
-    draw.text((x, y), text[1], fill="black", font=font)
-  
+    x = 412 - ((text_size[2] - text_size[0]) / 2)
+    y = 324
+    draw.text((x, y), text[1], fill="blue", font=font)
+
+ 
 
 
    
