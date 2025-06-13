@@ -25,12 +25,21 @@ def add_text_to_image(image_path, text, output_path, font_path='./font/Merriweat
     # text[1]= "SmartAgro: An AI-powered system that guides farmers in crop selection, fertilizer planning "
 
     print(len(text[1]))
+    if len(text[1]) > 125:
+        font_size = 10
+    elif len(text[1]) > 113:
+        font_size = 10
+    elif len(text[1]) > 107:
+        font_size = 10
 
-    if len(text[1]) > 90:
+    elif len(text[1]) > 100:
+        font_size = 12
+
+    elif len(text[1]) > 90:
         font_size = 13
-    elif len(text[1]) > 80:
-        font_size = 17
     elif len(text[1]) > 60:
+        font_size = 17
+    elif len(text[1]) > 50:
         font_size = 20
     else:
         font_size = 23

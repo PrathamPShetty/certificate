@@ -21,7 +21,7 @@ data = fetch_data_from_xlsx(file_path)
 for i in data:  
     certificate_path = certificateName()  
     input_image_path = os.path.join('certificates', certificate_path)  
-    temp_image_path = './temp/certificate.jpg'  
+    temp_image_path = f'./temp/{i[0]}_{i[1]}.jpg'  
     temp_pdf_path = sanitize_filename(i[0],i[1])+'.pdf' 
     # temp_pdf_path = f"./temp/certificate.pdf"
 
@@ -31,7 +31,7 @@ for i in data:
         print(f"File not found: {temp_image_path}")  
         continue  
 
-    convert_jpg_to_pdf(temp_image_path, temp_pdf_path)  
+    # convert_jpg_to_pdf(temp_image_path, temp_pdf_path)  
 
     name = i[0]  
     email = i[1]  
