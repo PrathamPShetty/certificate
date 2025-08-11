@@ -1,6 +1,6 @@
 import os
 def certificateName():
-    path = 'certificate.jpg'  # only file name
+    path = 'certificated1.jpg'  # only file name
     return path
 
 def xlsxName():

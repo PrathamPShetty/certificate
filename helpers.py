@@ -17,12 +17,12 @@ def add_text_to_image(image_path, text, output_path, font_path='./font/Merriweat
     font_size = 30
     font = ImageFont.truetype(font_path1, font_size)
     text_size = font.getbbox(text[0])
-    x = 412 - ((text_size[2] - text_size[0]) / 2)
-    y = 256
+    x = 410 - ((text_size[2] - text_size[0]) / 2)
+    y = 264
     draw.text((x, y), text[0], fill="brown", font=font)
     print(text[0])
 
-    # text[1]= "SmartAgro: An AI-powered system that guides farmers in crop selection, fertilizer planning "
+
 
     print(len(text[1]))
     if len(text[1]) > 125:

@@ -19,13 +19,14 @@ file_path = xlsxName()
 data = fetch_data_from_xlsx(file_path)  
 
 for i in data:  
+    
     certificate_path = certificateName()  
     input_image_path = os.path.join('certificates', certificate_path)  
-    temp_image_path = f'./temp/{i[0]}_{i[1]}.jpg'  
+    temp_image_path = f'./temp/{i[0]}.jpg'  
     temp_pdf_path = sanitize_filename(i[0],i[1])+'.pdf' 
     # temp_pdf_path = f"./temp/certificate.pdf"
 
-    add_text_to_image(input_image_path, [i[0], i[1]], temp_image_path)  
+    add_text_to_image(input_image_path, [i[1],i[0]], temp_image_path)  
 
     if not os.path.exists(temp_image_path):  
         print(f"File not found: {temp_image_path}")  
